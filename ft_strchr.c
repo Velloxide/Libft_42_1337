@@ -6,8 +6,17 @@
 /*   By: saboutay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/15 12:46:34 by saboutay          #+#    #+#             */
-/*   Updated: 2026/10/15 12:47:00 by saboutay         ###   ########.fr       */
+/*   Updated: 2026/10/15 13:07:37 by saboutay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s && *s != (char)c)
+		s++;
+	if (*s == (char)c)
+		return ((char *)s);
+	return (NULL);
+}

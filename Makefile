@@ -6,7 +6,7 @@
 #    By: saboutay <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/12 15:13:40 by saboutay          #+#    #+#              #
-#    Updated: 2026/10/15 12:40:48 by saboutay         ###   ########.fr        #
+#    Updated: 2026/10/16 12:58:25 by saboutay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,13 @@ SRCS = ft_isalpha.c\
        ft_strlcat.c\
        ft_toupper.c\
        ft_tolower.c\
+       ft_strchr.c\
+       ft_strrchr.c\
+       ft_strncmp.c\
+       ft_memchr.c\
+       ft_memcmp.c\
+       ft_strnstr.c\
+       ft_atoi.c\
 #$(filter-out main.c, $(wildcard *.c))
 OBJS = $(SRCS:.c=.o)
 
