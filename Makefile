@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: saboutay <saboutay@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/10/30 10:19:07 by saboutay          #+#    #+#              #
-#    Updated: 2026/11/03 18:52:47 by saboutay         ###   ########.fr        #
+#    Created: 2026/11/06 16:44:58 by saboutay          #+#    #+#              #
+#    Updated: 2026/11/06 16:45:06 by saboutay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS_M = src/mandatory/ft_printf.c\
 	 src/mandatory/ft_format.c\
 	 src/mandatory/print_char_str.c\
 	 src/mandatory/print_hex.c\
-	 src/mandatory/print_nbr.c\
+	 src/mandatory/print_nbr.c
 
 SRCS_B = src/bonus/ft_printf_bonus.c\
 	 src/bonus/pad_bonus.c\
@@ -47,15 +47,16 @@ endif
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(MAKE) -C libft
+$(NAME): $(OBJS) $(LIBFT_A)
 	cp $(LIBFT_A) $(NAME)
 	$(AR) $(NAME) $(OBJS)
 	$(RM) $(OTHER_MODE)
 %.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+$(LIBFT_A):
+	$(MAKE) -C libft
 bonus:
-	$(MAKE) WITH_BONUS=ON all
+	@$(MAKE) --no-print-directory WITH_BONUS=ON all
 clean:
 	$(RM) $(OBJS_M) $(OBJS_B)
 	$(MAKE) -C libft clean
