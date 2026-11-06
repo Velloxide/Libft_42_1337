@@ -6,11 +6,12 @@
 /*   By: saboutay <saboutay@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 14:43:26 by saboutay          #+#    #+#             */
-/*   Updated: 2026/11/06 09:58:17 by saboutay         ###   ########.fr       */
+/*   Updated: 2026/11/06 12:18:41 by saboutay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
+#include "libft.h"
 
 static int	ft_undefined(t_spec *spec)
 {
@@ -50,8 +51,8 @@ static int	ft_format(t_spec *spec, va_list *args)
 char	*ft_utoa_base(unsigned long long n, char *bufbase, int base)
 {
 	unsigned long long	nbr;
-	int	len;
-	char	*ptr;
+	int					len;
+	char				*ptr;
 
 	len = (n == 0);
 	nbr = n;
@@ -69,6 +70,18 @@ char	*ft_utoa_base(unsigned long long n, char *bufbase, int base)
 		n /= base;
 	}
 	return (ptr);
+}
+
+int	ft_zeros(t_spec *s, int plen, int len)
+{
+	int	zeros;
+
+	zeros = 0;
+	if (s->prec > len)
+		zeros = s->prec - len;
+	if (s->zero && !s->minus && s->prec < 0 && s->width > plen + len)
+		zeros = s->width - plen - len;
+	return (zeros);
 }
 
 int	ft_handle(const char *format, int *i, va_list *args)

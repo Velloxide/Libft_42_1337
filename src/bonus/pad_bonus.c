@@ -6,11 +6,12 @@
 /*   By: saboutay <saboutay@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/05 15:09:46 by saboutay          #+#    #+#             */
-/*   Updated: 2026/11/06 11:16:36 by saboutay         ###   ########.fr       */
+/*   Updated: 2026/11/06 12:27:31 by saboutay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
+#include "libft.h"
 
 int	ft_pad(int pad, char c)
 {
@@ -53,14 +54,44 @@ int	ft_print_field(t_spec *s, char *str, int len)
 	return (count + value);
 }
 
-int	ft_print_number(t_spec *s, char *str, int len, int zeros)
+static int	ft_print_body(char *prefix, int zeros, char *digits, int len)
 {
-	int	spaces;
 	int	count;
 	int	value;
 
-	spaces = s->width - len - zeros;
-	if (spaces < 0)
-		spaces = 0;
+	count = ft_print_str(prefix, ft_strlen(prefix));
+	if (count < 0)
+		return (-1);
+	value = ft_pad(zeros, '0');
+	if (value < 0)
+		return (-1);
+	count += value;
+	value = ft_print_str(digits, len);
+	if (value < 0)
+		return (-1);
+	return (count + value);
+}
 
+int	ft_print_number(t_spec *s, char *prefix, char *digits, int len)
+{
+	int	plen;
+	int	zeros;
+	int	total;
+	int	count;
+	int	value;
+
+	plen = ft_strlen(prefix);
+	zeros = ft_zeros(s, plen, len);
+	total = plen + zeros + len;
+	count = ft_pad_side(s, total, 0);
+	if (count < 0)
+		return (-1);
+	value = ft_print_body(prefix, zeros, digits, len);
+	if (value < 0)
+		return (-1);
+	count += value;
+	value = ft_pad_side(s, total, 1);
+	if (value < 0)
+		return (-1);
+	return (count + value);
 }

@@ -6,7 +6,7 @@
 /*   By: saboutay <saboutay@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 15:06:43 by saboutay          #+#    #+#             */
-/*   Updated: 2026/11/06 11:19:49 by saboutay         ###   ########.fr       */
+/*   Updated: 2026/11/06 12:25:05 by saboutay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int			ft_print_p(t_spec *s, void *ptr);
 int			ft_pad(int pad, char c);
 int			ft_print_field(t_spec *s, char *str, int len);
 int			ft_print_str(char *s, size_t size);
-int			ft_print_number(t_spec *s, char *str, int len, int zeros);
-char	*ft_utoa_base(unsigned long long n, char *bufbase, int base);
+int			ft_print_number(t_spec *s, char *prefix, char *digits, int len);
+int			ft_zeros(t_spec *s, int plen, int len);
+char		*ft_utoa_base(unsigned long long n, char *bufbase, int base);
 
 #endif

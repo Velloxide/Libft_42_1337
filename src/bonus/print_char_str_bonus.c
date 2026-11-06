@@ -23,8 +23,8 @@ int	ft_print_char(int c)
 
 int	ft_print_str(char *s, size_t size)
 {
-	int	byte_p;
-	int	value;
+	int		byte_p;
+	int		value;
 	size_t	i;
 
 	if (!s)
